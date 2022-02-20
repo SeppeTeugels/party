@@ -4,28 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
-    <title>about</title>
+    <title>pay</title>
 </head>
 <body>
 <header>
-    <h1>About</h1>
+    <h1>Pay</h1>
     <div class="blok"><a th:href="@{/}">home</a></div>
     <div class="blok1"><a th:href="@{/venuedetails}">venuedetails</a></div>
     <div class="blok2"><a th:href="@{/about}">about</a></div>
     <div class="blok2"><a th:href="@{/pay}">pay</a></div>
 </header>
 <main>
-    <div class="row1">
-        <ol>
-            <li><p th:text=" ${myName}"></p></li>
-            <li><p th:text=" ${myStreet}"></p></li>
-            <li><p th:text=" ${myCity}"></p></li>
-        </ol>
-        <p th:text="|Ik ben ${myName} en woon in ${myStreet}, te ${myCity}|"></p>
-    </div>
+    <h2 th:text="|De datum vandaag is ${datenow}|"></h2>
+    <h2 th:text="|De uiterste datum van betalen is ${date30}|"></h2>
 </main>
-<footer>
-    copyright ThomasMore
-</footer>
+<footer>copyright ThomasMore</footer>
 </body>
 </html>

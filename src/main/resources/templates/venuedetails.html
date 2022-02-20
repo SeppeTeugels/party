@@ -1,0 +1,49 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
+    <title>venuedetails</title>
+</head>
+<body>
+<header>
+    <h1>Let's Party!</h1>
+    <div class="blok"><a th:href="@{/}">home</a></div>
+    <div class="blok1"><a th:href="@{/venuedetails}">venuedetails</a></div>
+    <div class="blok2"><a th:href="@{/about}">about</a></div>
+    <div class="blok2"><a th:href="@{/pay}">pay</a></div>
+</header>
+<main>
+    <h2 th:text="${venue.getVenueName()}">venuedetails</h2>
+    <div class="container">
+        <div class="row">
+            <div class="Kolom1">
+                <p> info:</p>
+                <p>max number of persons:</p>
+                <p>food provided:</p>
+                <p>indoor:</p>
+                <p>outdoor:</p>
+                <p>free parking:</p>
+                <p>city:</p>
+                <p>distance from public transport:</p>
+            </div>
+
+            <div class="Kolom2">
+
+                <a th:href="${venue.getLinkMoreInfo()}"><p th:text="${venue.getLinkMoreInfo()}"></p></a>
+                <p th:text="${venue.getCapacity()}">venuedetails</p>
+                <p th:text="${venue.isFoodProvided()}"></p>
+                <p th:text="${venue.isIndoor()}"></p>
+                <p th:text="${venue.isOutdoor()}"></p>
+                <p th:text="${venue.isFreeParkingAvailable()}"></p>
+                <p th:text="${venue.getCity()}">venuedetails</p>
+                <p th:text="|${venue.getDistanceFromPublicTransportInKm()} km|">venuedetails</p>
+            </div>
+        </div>
+    </div>
+
+</main>
+<footer>copyright ThomasMore</footer>
+</body>
+</html>
