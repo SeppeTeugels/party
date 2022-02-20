@@ -58,8 +58,8 @@ public class ClientController {
             s += " misses " + name[1] + ", ";
         }
         s += "ur SecretCode is: ";
-        String geboortejaar = client.getBirthdate().replaceAll("-","");
-        int digitcode = random.nextInt(100000,999999);
+        String[] geboorte = client.getBirthdate().split("-");
+        String digitcode = geboorte[0] + random.nextInt(0, Integer.parseInt(geboorte[2]))  ;
         s += ""+name[1].charAt(0)+name[1].charAt(1)+name[1].charAt(name[1].length()-1)+digitcode;
         return s;
     }
@@ -76,5 +76,14 @@ public class ClientController {
         }
         return "greetingNewClient";
     }
-
+    @GetMapping("/getsecretcode")
+    public String getSecretCode(Model model) {
+        Optional<Client> client = clientRepository.findById(1);
+        if (client.isPresent()) {
+            Client clientdetails = client.get();
+            String secretcode = showSecretCode(clientdetails);
+            model.addAttribute("secretcode", secretcode);
+        }
+        return "getsecretcode";
+    }
 }
