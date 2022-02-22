@@ -7,13 +7,7 @@
     <title>about</title>
 </head>
 <body>
-<header>
-    <h1>About</h1>
-    <div class="blok"><a th:href="@{/}">home</a></div>
-    <div class="blok1"><a th:href="@{/venuedetails}">venuedetails</a></div>
-    <div class="blok2"><a th:href="@{/about}">about</a></div>
-    <div class="blok2"><a th:href="@{/pay}">pay</a></div>
-</header>
+<div th:replace="fragments/header:: header">Header</div>
 <main>
     <div class="row1">
         <ol>

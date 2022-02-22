@@ -1,0 +1,35 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
+    <title>Venuelist</title>
+</head>
+<body>
+<div th:replace="fragments/header:: header">Header</div>
+<main>
+    <h2>venues</h2>
+    <div class="container">
+        <div class="row">
+            <div class="Kolom1">
+                <div class="blok2"><a th:href="@{/venuedetails/1}">venue 1</a></div>
+                <div class="blok2"><a th:href="@{/venuedetails/2}">venue 2</a></div>
+                <div class="blok2"><a th:href="@{/venuedetails/3}">venue 3</a></div>
+                <div class="blok2"><a th:href="@{/venuedetails/4}">venue 4</a></div>
+                <div class="blok2"><a th:href="@{/venuedetails/5}">venue 5</a></div>
+                <div class="blok2"><a th:href="@{/venuedetails/6}">venue 6</a></div>
+                <div class="blok2"><a th:href="@{/venuedetails/7}">venue 7</a></div>
+                <div class="blok2"><a th:href="@{/venuedetails/8}">venue 8</a></div>
+                <div class="blok2"><a th:href="@{/venuedetails/9}">venue 9</a></div>
+                <div class="blok2"><a th:href="@{/venuedetails/10}">venue 10</a></div>
+                <div class="blok2"><a th:href="@{/venuedetails/11}">venue 11</a></div>
+                <div class="blok2"><a th:href="@{/venuedetails}">venuedetails</a></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>copyright ThomasMore</footer>
+</body>
+</html>
