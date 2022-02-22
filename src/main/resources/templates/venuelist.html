@@ -13,17 +13,9 @@
     <div class="container">
         <div class="row">
             <div class="Kolom1">
-                <div class="blok2"><a th:href="@{/venuedetails/1}">venue 1</a></div>
-                <div class="blok2"><a th:href="@{/venuedetails/2}">venue 2</a></div>
-                <div class="blok2"><a th:href="@{/venuedetails/3}">venue 3</a></div>
-                <div class="blok2"><a th:href="@{/venuedetails/4}">venue 4</a></div>
-                <div class="blok2"><a th:href="@{/venuedetails/5}">venue 5</a></div>
-                <div class="blok2"><a th:href="@{/venuedetails/6}">venue 6</a></div>
-                <div class="blok2"><a th:href="@{/venuedetails/7}">venue 7</a></div>
-                <div class="blok2"><a th:href="@{/venuedetails/8}">venue 8</a></div>
-                <div class="blok2"><a th:href="@{/venuedetails/9}">venue 9</a></div>
-                <div class="blok2"><a th:href="@{/venuedetails/10}">venue 10</a></div>
-                <div class="blok2"><a th:href="@{/venuedetails/11}">venue 11</a></div>
+                <div class="blok2" th:each="venue : ${venues}">
+                    <a th:href="@{|/venuedetails/${venue.id}|}" th:text="${venue.getVenueName()}">venue Name</a></a>
+                </div>
                 <div class="blok2"><a th:href="@{/venuedetails}">venuedetails</a></div>
             </div>
         </div>
