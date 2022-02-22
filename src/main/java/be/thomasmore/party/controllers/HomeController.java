@@ -46,7 +46,6 @@ public class HomeController {
         String weekday = "Voor je het weet is het weekend! ";
         LocalDate date = LocalDate.now();
         DayOfWeek day = DayOfWeek.of(date.get(ChronoField.DAY_OF_WEEK));
-        System.out.println(day);
         switch (day) {
             case FRIDAY:
                 weekday = "Prettig weekend, je hebt het verdiend!";
