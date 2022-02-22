@@ -4,32 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
-    <title>clientdetails</title>
+    <title>Artistlist</title>
 </head>
 <body>
 <div th:replace="fragments/header:: header">Header</div>
 <main>
-    <h2 th:text=)${client.getName()}">venuedetails</h2>
+    <h2>Artists</h2>
     <div class="container">
         <div class="row">
             <div class="Kolom1">
-                <p> date of birth:</p>
-                <p>gender:</p>
-                <p>start date:</p>
-
-            </div>
-
-            <div class="Kolom2">
-
-                <p th:text="${client.getBirthdate()}"></p>
-                <p th:text="${client.getGender()}"></p>
-                <p th:text="${client.getStartdate()}"></p>
-
+                <div class="blok2" th:each="artist : ${artists}">
+                    <a th:href="@{|/artistdetails/${artist.id}|}" th:text="${artist.getArtistName()}">Artistname Name</a></a>
+                </div>
+                <div class="blok2"><a th:href="@{/venuedetails}">venuedetails</a></div>
             </div>
         </div>
     </div>
-
 </main>
+
 <div th:replace="fragments/footer:: footer">footer</div>
 </body>
 </html>

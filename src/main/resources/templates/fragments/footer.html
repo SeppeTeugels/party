@@ -4,15 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
-    <title>pay</title>
+    <title>Home</title>
 </head>
 <body>
-<div th:replace="fragments/header:: header">Header</div>
-<main>
-    <h2 th:text="${weekday}"></h2>
-    <h2 th:text="|De datum vandaag is ${datenow}|"></h2>
-    <h2 th:text="|De uiterste datum van betalen is ${date30}|"></h2>
-</main>
-<div class="footer" th:replace="fragments/footer:: footer">footer</div>
+<div class="footer" th:fragment="footer">
+    <p>Copyright ThomasMore</p>
+</div>
 </body>
 </html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
+    <title>venuedetails</title>
+</head>
+<body>
+<div th:replace="fragments/header:: header">Header</div>
+<main>
+    <div class="container">
+        <div class="row">
+            <!-- hier test je of venue niet gelijk is aan null ( is er een waarde aanwezig) -->
+            <div class="Kolom2" th:if="${artist}">
+
+                <h2 th:text="${artist.getArtistName()}"></h2>
+                <a th:href="${artist.getLinkMoreInfo()}"><p th:text="${artist.getLinkMoreInfo()}"></p></a>
+                <p th:text="|Genre: ${artist.getGenre()}|">artistdetails</p>
+                <p th:text="|Portfolio :${artist.getPortfolio()}|"> artistdetails</p>
+                <p th:text="|Bio: ${artist.getBio()}|">artistdetails</p>
+
+            </div>
+            <div class="kolom2" th:unless="${artist}">
+                <p>no artist chosen</p>
+            </div>
+        </div>
+    </div>
+</main>
+<div th:replace="fragments/footer:: footer">footer</div>
+</body>
+</html>

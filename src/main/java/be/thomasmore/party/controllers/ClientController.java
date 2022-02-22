@@ -70,9 +70,7 @@ public class ClientController {
         if (client.isPresent()) {
             Client clientdetails = client.get();
             String message = getmessage(clientdetails);
-            String secretcode = showSecretCode(clientdetails);
             model.addAttribute("message", message);
-            model.addAttribute("secretcode", secretcode);
         }
         return "greetingNewClient";
     }

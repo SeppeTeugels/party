@@ -3,9 +3,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoField;
+import java.util.Calendar;
 
 @Controller
 public class HomeController {
@@ -34,6 +37,24 @@ public class HomeController {
         model.addAttribute("datenow",datenow);
         LocalDate date30 = datenow.plusDays(30);
         model.addAttribute("date30",date30);
+        String weekday = weekday();
+        model.addAttribute("weekday",weekday);
         return "pay";
+    }
+
+    public String weekday(){
+        String weekday = "Voor je het weet is het weekend! ";
+        LocalDate date = LocalDate.now();
+        DayOfWeek day = DayOfWeek.of(date.get(ChronoField.DAY_OF_WEEK));
+        System.out.println(day);
+        switch (day) {
+            case FRIDAY:
+                weekday = "Prettig weekend, je hebt het verdiend!";
+            case SATURDAY:
+                weekday = "Prettig weekend, je hebt het verdiend!";
+            case SUNDAY:
+                weekday = "Prettig weekend, je hebt het verdiend!";
+        }
+        return weekday;
     }
 }

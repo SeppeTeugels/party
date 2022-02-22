@@ -18,8 +18,6 @@
         <p th:text="|Ik ben ${myName} en woon in ${myStreet}, te ${myCity}|"></p>
     </div>
 </main>
-<footer>
-    copyright ThomasMore
-</footer>
+<div th:replace="fragments/footer:: footer">footer</div>
 </body>
 </html>
