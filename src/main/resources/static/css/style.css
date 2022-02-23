@@ -61,6 +61,9 @@ a{
     text-align: center;
     align-content: center;
 }
+.blok4{
+    display: inline-block;
+}
 .Kolom1{
     margin-left: 35px;
     display: inline-block;
@@ -68,4 +71,7 @@ a{
 .Kolom2{
     margin-left: 30px;
     display: inline-block;
+}
+.activeFilter{
+ background-color: crimson;
 }

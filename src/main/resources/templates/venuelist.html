@@ -11,6 +11,10 @@
 <main>
     <h2>venues</h2>
     <div class="container">
+        <div class="blok4">outdoor</div>
+        <div th:class="blok"><a th:href="@{/venuelist/outdoor/yes}" th:classappend="${#httpServletRequest.getRequestURI() == '/venuelist/outdoor/yes' ? 'activeFilter':''}">yes</a></div>
+        <div th:class="blok"><a th:href="@{/venuelist/outdoor/no}" th:classappend="${#httpServletRequest.getRequestURI() == '/venuelist/outdoor/no' ? 'activeFilter':''}">no</a></div>
+        <div th:class="blok"><a th:href="@{/venuelist/outdoor/all}" th:classappend="${#httpServletRequest.getRequestURI() == '/venuelist/outdoor/all' ? 'activeFilter':''}">all</a></div>
         <div class="row">
             <div class="Kolom1">
                 <div class="blok3" th:each="venue : ${venues}">
@@ -21,6 +25,7 @@
         </div>
     </div>
 </main>
+
 
 <div th:replace="fragments/footer:: footer">footer</div>
 </body>
