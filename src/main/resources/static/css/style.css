@@ -84,3 +84,12 @@ a{
     font-size: 32px;
     float: right;
 }
+.prevButton{
+    background-color: #EDC6CF;
+    font-size: 32px;
+}
+.nextButton{
+    background-color: #EDC6CF;
+    font-size: 32px;
+    float: right;
+}
