@@ -11,10 +11,22 @@
 <main>
     <h2>venues</h2>
     <div class="container">
-        <div class="blok4">outdoor</div>
+        <div class="blok4">Outdoor</div>
         <div th:class="blok"><a th:href="@{/venuelist/outdoor/yes}" th:classappend="${#httpServletRequest.getRequestURI() == '/venuelist/outdoor/yes' ? 'activeFilter':''}">yes</a></div>
         <div th:class="blok"><a th:href="@{/venuelist/outdoor/no}" th:classappend="${#httpServletRequest.getRequestURI() == '/venuelist/outdoor/no' ? 'activeFilter':''}">no</a></div>
         <div th:class="blok"><a th:href="@{/venuelist/outdoor/all}" th:classappend="${#httpServletRequest.getRequestURI() == '/venuelist/outdoor/all' ? 'activeFilter':''}">all</a></div>
+
+        <div class="blok4">Indoor</div>
+        <div th:class="blok"><a th:href="@{/venuelist/indoor/yes}" th:classappend="${#httpServletRequest.getRequestURI() == '/venuelist/indoor/yes' ? 'activeFilter':''}">yes</a></div>
+        <div th:class="blok"><a th:href="@{/venuelist/indoor/no}" th:classappend="${#httpServletRequest.getRequestURI() == '/venuelist/indoor/no' ? 'activeFilter':''}">no</a></div>
+        <div th:class="blok"><a th:href="@{/venuelist/indoor/all}" th:classappend="${#httpServletRequest.getRequestURI() == '/venuelist/indoor/all' ? 'activeFilter':''}">all</a></div>
+
+        <div class="blok4">Size</div>
+        <div th:class="blok"><a th:href="@{/venuelist/size/s}" th:classappend="${#httpServletRequest.getRequestURI() == '/venuelist/size/s' ? 'activeFilter':''}">s</a></div>
+        <div th:class="blok"><a th:href="@{/venuelist/size/m}" th:classappend="${#httpServletRequest.getRequestURI() == '/venuelist/size/m' ? 'activeFilter':''}">m</a></div>
+        <div th:class="blok"><a th:href="@{/venuelist/size/l}" th:classappend="${#httpServletRequest.getRequestURI() == '/venuelist/size/l' ? 'activeFilter':''}">l</a></div>
+        <div th:class="blok"><a th:href="@{/venuelist/size/all}" th:classappend="${#httpServletRequest.getRequestURI() == '/venuelist/size/all' ? 'activeFilter':''}">all</a></div>
+
         <div class="row">
             <div class="Kolom1">
                 <div class="blok3" th:each="venue : ${venues}">
