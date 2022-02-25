@@ -20,6 +20,8 @@ public class ArtistController {
     @GetMapping({"/artistdetails/{id}", "/artistdetails"})
     public String venuedetails(Model model, @PathVariable(required = false) Integer id) {
         if(id == null) return "artistdetails";
+        long allartists = artistRepository.count();
+        model.addAttribute("allartists",allartists);
         Optional<Artist> ArtistFromDb = artistRepository.findById(id);
         ArtistFromDb.ifPresent(artist -> model.addAttribute("artist", artist));
         return "artistdetails";

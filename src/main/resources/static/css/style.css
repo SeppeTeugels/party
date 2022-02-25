@@ -75,3 +75,12 @@ a{
 .activeFilter{
  background-color: crimson;
 }
+.prevButton{
+    background-color: #EDC6CF;
+    font-size: 32px;
+}
+.nextButton{
+    background-color: #EDC6CF;
+    font-size: 32px;
+    float: right;
+}

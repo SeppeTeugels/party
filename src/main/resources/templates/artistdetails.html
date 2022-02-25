@@ -10,6 +10,10 @@
 <div th:replace="fragments/header:: header">Header</div>
 <main>
     <div class="container">
+        <div class="kolom2" th:if="${artist}">
+            <a class="prevButton" th:if="${artist.getId()}>1" th:href="@{${artist.id}-1}" th:text="'<'"></a>
+            <a class="nextButton" th:if="${artist.getId()}<${allartists}" th:href="@{${artist.id}+1}" th:text="'>'"></a>
+        </div>
         <div class="row">
             <!-- hier test je of venue niet gelijk is aan null ( is er een waarde aanwezig) -->
             <div class="Kolom2" th:if="${artist}">
