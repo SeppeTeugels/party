@@ -13,7 +13,10 @@
     <div class="container">
         <div class="kolom2" th:if="${venue}">
             <a class="prevButton" th:if="${venue.getId()}>1" th:href="@{${venue.id}-1}" th:text="'<'"></a>
+            <a class="prevButton" th:if="${venue.getId()}== 1" th:href="@{${allvenues.longValue()}}" th:text="'<'"></a>
+
             <a class="nextButton" th:if="${venue.getId()}<${allvenues}" th:href="@{${venue.id}+1}" th:text="'>'"></a>
+            <a class="nextButton" th:if="${venue.getId()}==${allvenues}" th:href="@{1}" th:text="'>'"></a>
         </div>
         <div class="row">
             <div class="Kolom1" th:if="${venue}">
