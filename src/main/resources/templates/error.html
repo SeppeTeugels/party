@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
-    <title>Home</title>
+    <title>error</title>
 </head>
 <body>
- <div th:replace="fragments/header:: header">Header</div>
+<div th:replace="fragments/header:: header">Header</div>
 <main>
-    <img th:src="@{'/img/party.png'}">
+   <h2> Er is een fout opgetreden ga terug naar <a th:href="@{/}">home menu</a> </h2>
 </main>
 
- <div th:replace="fragments/footer:: footer">footer</div>
+<div th:replace="fragments/footer:: footer">footer</div>
 </body>
 </html>
