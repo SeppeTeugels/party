@@ -93,3 +93,8 @@ a{
     font-size: 32px;
     float: right;
 }
+.onefilter {
+    display: flex;
+    margin: 2px 0;
+}
+

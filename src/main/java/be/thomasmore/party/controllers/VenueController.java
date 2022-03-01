@@ -28,20 +28,19 @@ public class VenueController {
     @GetMapping({"/venuelist" , "/venuelist/{filter}"})
     public String venuelist(Model model, @PathVariable (required = false) String filter){
         final Iterable<Venue> allVenues = venueRepository.findAll();
+        model.addAttribute("venues",allVenues);
+        long allvenuesconut = venueRepository.count();
+        model.addAttribute("allvenuescount",allvenuesconut);
         Boolean showFilter = false;
         if(filter == null){
             model.addAttribute("showFilter",showFilter);
-            model.addAttribute("venues",allVenues);
             return "venuelist";
         }
         else if(filter.equals("filter")){
-            model.addAttribute("venues",allVenues);
             showFilter = true;
             model.addAttribute("showFilter",showFilter);
             return "venuelist";
         }
-        model.addAttribute("showFilter",showFilter);
-        model.addAttribute("venues",allVenues);
         return "venuelist";
     }
 }
