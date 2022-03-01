@@ -30,7 +30,7 @@
         <div class="row">
             <div class="Kolom1">
                 <div class="blok3" th:each="venue : ${venues}">
-                    <a th:href="@{|/venuedetails/${venue.id}|}" th:text="${venue.getVenueName()}">venue Name</a></a>
+                    <a th:href="@{|/venuedetails/${venue.id}|}" th:text="${venue.getVenueName()}">venue Name</a>
                 </div>
                 <div class="blok3"><a th:href="@{/venuedetails}">venuedetails</a></div>
             </div>
