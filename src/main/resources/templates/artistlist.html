@@ -14,7 +14,7 @@
         <div class="row">
             <div class="Kolom1">
                 <div class="blok3" th:each="artist : ${artists}">
-                    <a th:href="@{|/artistdetails/${artist.id}|}" th:text="${artist.getArtistName()}">Artistname Name</a></a>
+                    <a th:href="@{|/artistdetails/${artist.id}|}" th:text="${artist.getArtistName()}">Artistname Name</a>
                 </div>
                 <div class="blok3"><a th:href="@{/artistdetails}">artistdetails</a></div>
             </div>

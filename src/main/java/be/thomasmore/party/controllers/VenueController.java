@@ -22,7 +22,6 @@ public class VenueController {
         model.addAttribute("allvenues",allvenues);
         Optional<Venue> venueFromDb = venueRepository.findById(id);
         venueFromDb.ifPresent(venue -> model.addAttribute("venue", venue));
-
         return "venuedetails";
     }
 
@@ -32,92 +31,5 @@ public class VenueController {
         model.addAttribute("venues",allVenues);
         return "venuelist";
     }
-
-    @GetMapping({"/venuelist/outdoor/{filter}","/venuelist/outdoor", "/venuelist/{filter}"})
-    public String venuelistOutdoor(Model model,@PathVariable (required = false) String filter){
-        if (filter == null){
-            Iterable<Venue> allVenues = venueRepository.findAll();
-            model.addAttribute("venues",allVenues);
-            return "venuelist";
-        }
-        if (filter.equals("yes")){
-            Iterable<Venue> allVenues = venueRepository.findByOutdoor(true);
-            model.addAttribute("venues",allVenues);
-            return "venuelist";
-        }
-        else if(filter.equals("no")){
-            Iterable<Venue> allVenues = venueRepository.findByOutdoor(false);
-            model.addAttribute("venues",allVenues);
-            return "venuelist";
-        }
-        else if(filter.equals("all")){
-            Iterable<Venue> allVenues = venueRepository.findAll();
-            model.addAttribute("venues",allVenues);
-        }
-        else {
-            Iterable<Venue> allVenues = venueRepository.findAll();
-            model.addAttribute("venues",allVenues);
-        }
-        return "venuelist";
-    }
-    @GetMapping({"/venuelist/indoor/{filter}","/venuelist/indoor", "/venuelist/{filter}"})
-    public String venuelistIndoor(Model model,@PathVariable (required = false) String filter){
-        if (filter == null){
-            Iterable<Venue> allVenues = venueRepository.findAll();
-            model.addAttribute("venues",allVenues);
-            return "venuelist";
-        }
-        if (filter.equals("yes")){
-            Iterable<Venue> allVenues = venueRepository.findByIndoor(true);
-            model.addAttribute("venues",allVenues);
-            return "venuelist";
-        }
-        else if(filter.equals("no")){
-            Iterable<Venue> allVenues = venueRepository.findByIndoor(false);
-            model.addAttribute("venues",allVenues);
-            return "venuelist";
-        }
-        else if(filter.equals("all")){
-            Iterable<Venue> allVenues = venueRepository.findAll();
-            model.addAttribute("venues",allVenues);
-        }
-        else {
-            Iterable<Venue> allVenues = venueRepository.findAll();
-            model.addAttribute("venues",allVenues);
-        }
-        return "venuelist";
-    }
-    @GetMapping({"/venuelist/size/{filter}","/venuelist/size", "/venuelist/{filter}"})
-    public String venuelistSize(Model model,@PathVariable (required = false) String filter){
-        if (filter == null){
-            Iterable<Venue> allVenues = venueRepository.findAll();
-            model.addAttribute("venues",allVenues);
-            return "venuelist";
-        }
-        if (filter.equals("s")){
-            Iterable<Venue> allVenues = venueRepository.findBySmaller(200);
-            model.addAttribute("venues",allVenues);
-            return "venuelist";
-        }
-        else if(filter.equals("m")){
-            Iterable<Venue> allVenues = venueRepository.findByCapacityBetween(200,600);
-            model.addAttribute("venues",allVenues);
-            return "venuelist";
-        }
-        else if(filter.equals("l")){
-            Iterable<Venue> allVenues = venueRepository.findByBigger(600);
-            model.addAttribute("venues",allVenues);
-        }
-        else if(filter.equals("all")){
-            Iterable<Venue> allVenues = venueRepository.findAll();
-            model.addAttribute("venues",allVenues);
-        }
-        else {
-            Iterable<Venue> allVenues = venueRepository.findAll();
-            model.addAttribute("venues",allVenues);
-        }
-        return "venuelist";
-    }
-
 
 }
