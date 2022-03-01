@@ -25,11 +25,23 @@ public class VenueController {
         return "venuedetails";
     }
 
-    @GetMapping({"/venuelist"})
-    public String venuelist(Model model){
+    @GetMapping({"/venuelist" , "/venuelist/{filter}"})
+    public String venuelist(Model model, @PathVariable (required = false) String filter){
         final Iterable<Venue> allVenues = venueRepository.findAll();
+        Boolean showFilter = false;
+        if(filter == null){
+            model.addAttribute("showFilter",showFilter);
+            model.addAttribute("venues",allVenues);
+            return "venuelist";
+        }
+        else if(filter.equals("filter")){
+            model.addAttribute("venues",allVenues);
+            showFilter = true;
+            model.addAttribute("showFilter",showFilter);
+            return "venuelist";
+        }
+        model.addAttribute("showFilter",showFilter);
         model.addAttribute("venues",allVenues);
         return "venuelist";
     }
-
 }

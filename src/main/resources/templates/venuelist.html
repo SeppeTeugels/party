@@ -10,8 +10,10 @@
 <div th:replace="fragments/header:: header">Header</div>
 <main>
     <h2>venues</h2>
-    <div class="container">
-        <a class="blok2" th:href="@{|/venuelist/filter|}" th:text="filter">filter</a>
+    <div class="container"><a class="blok2" th:if="${!showFilter}" th:href="@{|/venuelist/filter|}" th:text="filter">filter</a>
+        <a class="blok2" th:if="${showFilter}" th:href="@{|/venuelist|}" th:text="'-'">filter</a>
+        <div  th:if="${showFilter}" th:text="|filters komen hier|" ></div>
+
         <div class="row">
             <div class="Kolom1">
                 <div class="blok3" th:each="venue : ${venues}">
