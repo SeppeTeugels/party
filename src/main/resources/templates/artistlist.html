@@ -11,6 +11,26 @@
 <main>
     <h2>Artists</h2>
     <div class="container">
+        <div class="container">
+            <a class="blok2" th:if="${!showFilter}" th:href="@{|/artistlist/filter|}" th:text="filter">filter</a>
+            <a class="blok2" th:if="${showFilter}" th:href="@{|/artistlist|}" th:text="'-'">filter</a>
+        </div>
+        <div th:if="${showFilter}">
+<!--            <div th:text="|${allartistcount} artists found|"></div>-->
+            <form>
+                <div class="onefilter">
+                    <input class="blok2" type="submit" value="search">
+                </div>
+                <h3>keyword's</h3>
+                <div>
+                    <div>
+                        <label for="keyword">keyword</label>
+                        <input type="text" id="keyword" name="keyword" placeholder="enter artist">
+                    </div>
+
+                </div>
+            </form>
+        </div>
         <div class="row">
             <div class="Kolom1">
                 <div class="blok3" th:each="artist : ${artists}">
