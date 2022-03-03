@@ -10,17 +10,26 @@
 <div th:replace="fragments/header:: header">Header</div>
 <main>
     <h2>venues</h2>
-    <div class="container"><a class="blok2" th:if="${!showFilter}" th:href="@{|/venuelist/filter|}" th:text="filter">filter</a>
+    <div class="container">
+        <a class="blok2" th:if="${!showFilter}" th:href="@{|/venuelist/filter|}" th:text="filter">filter</a>
         <a class="blok2" th:if="${showFilter}" th:href="@{|/venuelist|}" th:text="'-'">filter</a>
-        <div th:if="${showFilter}" th:text="|${allvenuescount} venues found|"></div>
+    </div>
+    <div th:if="${showFilter}">
+        <div th:text="|${allvenuescount} venues found|"></div>
         <form>
             <div class="onefilter">
                 <input class="blok2" type="submit" value="search">
             </div>
             <h3>capacity</h3>
             <div>
-                <label for="minCapacity">min</label>
-                <input type="number" id="minCapacity" name="minCapacity" value="0" step="50">Persons
+                <div>
+                    <label for="minCapacity">min </label>
+                    <input type="number" id="minCapacity" name="minCapacity" step="50">Persons
+                </div>
+                <div>
+                    <label for="maxCapacity">max </label>
+                    <input type="number" id="maxCapacity" name="maxCapacity" step="50">Persons
+                </div>
             </div>
         </form>
     </div>
