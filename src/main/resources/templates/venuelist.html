@@ -15,7 +15,7 @@
         <a class="blok2" th:if="${showFilter}" th:href="@{|/venuelist|}" th:text="'-'">filter</a>
     </div>
     <div th:if="${showFilter}">
-        <div th:text="|${allvenuescount} venues found|"></div>
+        <div th:text="|${amount} venues found|"></div>
         <form>
             <div class="onefilter">
                 <input class="blok2" type="submit" value="search">

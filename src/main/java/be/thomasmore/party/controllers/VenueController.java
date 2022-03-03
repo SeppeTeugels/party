@@ -55,25 +55,40 @@ public class VenueController {
         Iterable<Venue> venuessmaller = venueRepository.findBySmaller(maxCapacity);
         final Iterable<Venue> allVenues = venueRepository.findAll();
         model.addAttribute("venues", allVenues);
-        long allvenuesconut = venueRepository.count();
-        model.addAttribute("allvenuescount", allvenuesconut);
         boolean showFilter = true;
         if(minCapacity == null && maxCapacity == null){
             model.addAttribute("venues", allVenues);
             model.addAttribute("showFilter", showFilter);
+            long allvenuescount = venueRepository.count();
+            model.addAttribute("amount",allvenuescount);
             return "venuelist";
         }else if (minCapacity != null && maxCapacity == null){
             model.addAttribute("showFilter", showFilter);
             model.addAttribute("venues",venuesbigger);
+            int counter = 0 ;
+            for ( Venue ven : venuesbigger){
+                counter ++;
+            }
+            model.addAttribute("amount", counter);
             return "venuelist";
         }else if(minCapacity == null){
             model.addAttribute("showFilter", showFilter);
             model.addAttribute("venues",venuessmaller);
+            int counter = 0 ;
+            for ( Venue ven : venuessmaller){
+                counter ++;
+            }
+            model.addAttribute("amount", counter);
+            return "venuelist";
         }else {
             model.addAttribute("showFilter", showFilter);
             model.addAttribute("venues",venuesbetween);
+            int counter = 0 ;
+            for ( Venue ven : venuesbetween){
+                counter ++;
+            }
+            model.addAttribute("amount", counter);
+            return "venuelist";
         }
-        model.addAttribute("showFilter", showFilter);
-        return "venuelist";
     }
 }
