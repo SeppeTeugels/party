@@ -18,4 +18,8 @@ public interface VenueRepository extends CrudRepository<Venue,Integer> {
     @Query
             ("SELECT v from Venue v where v.capacity >=:min")
     Iterable<Venue> findBybigger( @Param("min") Integer minCapacity);
+
+    @Query
+            ("SELECT v from Venue v where v.distanceFromPublicTransportInKm <=:max")
+    Iterable<Venue> findByfar( @Param("max") double maxKm);
 }

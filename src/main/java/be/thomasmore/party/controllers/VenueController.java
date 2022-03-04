@@ -47,12 +47,14 @@ public class VenueController {
     }
 
     @GetMapping({"/venuelist/filter"})
-    public String venueListWithFilter(Model model, @RequestParam(required = false) Integer minCapacity, @RequestParam(required = false) Integer maxCapacity) {
+    public String venueListWithFilter(Model model, @RequestParam(required = false) Integer minCapacity, @RequestParam(required = false) Integer maxCapacity/*, @RequestParam(required = false) double maxKm*/) {
         logger.info(String.format("venueListWithFilter -- min=%d", minCapacity));
         logger.info(String.format("venueListWithFilter -- max=%d", maxCapacity));
+//        logger.info(String.format("venueListWithFilter -- maxKm=%f", maxKm));
         Iterable<Venue> venuesbetween = venueRepository.findByCapacityBetween(minCapacity,maxCapacity);
         Iterable<Venue> venuesbigger= venueRepository.findBybigger(minCapacity);
         Iterable<Venue> venuessmaller = venueRepository.findBySmaller(maxCapacity);
+//        Iterable<Venue> venuesdistance = venueRepository.findByfar(maxKm);
         final Iterable<Venue> allVenues = venueRepository.findAll();
         model.addAttribute("venues", allVenues);
         boolean showFilter = true;
@@ -61,7 +63,6 @@ public class VenueController {
             model.addAttribute("showFilter", showFilter);
             long allvenuescount = venueRepository.count();
             model.addAttribute("amount",allvenuescount);
-            return "venuelist";
         }else if (minCapacity != null && maxCapacity == null){
             model.addAttribute("showFilter", showFilter);
             model.addAttribute("venues",venuesbigger);
@@ -70,7 +71,6 @@ public class VenueController {
                 counter ++;
             }
             model.addAttribute("amount", counter);
-            return "venuelist";
         }else if(minCapacity == null){
             model.addAttribute("showFilter", showFilter);
             model.addAttribute("venues",venuessmaller);
@@ -79,7 +79,6 @@ public class VenueController {
                 counter ++;
             }
             model.addAttribute("amount", counter);
-            return "venuelist";
         }else {
             model.addAttribute("showFilter", showFilter);
             model.addAttribute("venues",venuesbetween);
@@ -88,7 +87,12 @@ public class VenueController {
                 counter ++;
             }
             model.addAttribute("amount", counter);
-            return "venuelist";
         }
+        /*if (maxKm != 0){
+            model.addAttribute("venues",venuesdistance);
+        }else {
+            model.addAttribute("venues",allVenues);
+        }*/
+        return "venuelist";
     }
 }
