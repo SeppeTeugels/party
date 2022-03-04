@@ -35,6 +35,7 @@
                     <label for="maxKm">max </label>
                     <input type="number" id="maxKm" name="maxKm" step="1">km
                 </div>
+                <h3>Food</h3>
                 <div>
                     <label for="FoodYes" class="filtername">yes</label>
                     <input type="radio" id="foodYes" name="filterFood" value="yes">
@@ -47,12 +48,38 @@
                     <label for="Foodall" class="filtername">all</label>
                     <input type="radio" id="foodall" name="filterFood" value="all">
                 </div>
+                <h3> Indoor</h3>
+                <div>
+                    <label for="indoorYes" class="filtername">yes</label>
+                    <input type="radio" id="indoorYes" name="filterIndoor" value="yes">
+                </div>
+                <div>
+                    <label for="indoorNo" class="filtername">no</label>
+                    <input type="radio" id="indoorNo" name="filterIndoor" value="no">
+                </div>
+                <div>
+                    <label for="indoorall" class="filtername">all</label>
+                    <input type="radio" id="indoorall" name="filterIndoor" value="all">
+                </div>
+                <h3> Outdoor</h3>
+                <div>
+                    <label for="outdoorYes" class="filtername">yes</label>
+                    <input type="radio" id="outdoorYes" name="filterOutdoor" value="yes">
+                </div>
+                <div>
+                    <label for="outdoorNo" class="filtername">no</label>
+                    <input type="radio" id="outdoorNo" name="filterOutdoor" value="no">
+                </div>
+                <div>
+                    <label for="outdoorAll" class="filtername">all</label>
+                    <input type="radio" id="outdoorAll" name="filterOutdoor" value="all">
+                </div>
             </div>
         </form>
     </div>
-    <div class="row">
-        <div class="Kolom1">
-            <div th:each="venue : ${venues}">
+    <div class="row ">
+        <div class="Kolom1 " >
+            <div  th:each="venue : ${venues}">
                 <a class="blok3" th:href="@{|/venuedetails/${venue.id}|}">
                     <span th:utext="${venue.getVenueName()}"></span>
                     <div th:text="| capacity: ${venue.getCapacity()}|"></div>
