@@ -24,17 +24,18 @@
             <div>
                 <div>
                     <label for="minCapacity">min </label>
-                    <input type="number" id="minCapacity" name="minCapacity" step="50">Persons
+                    <input type="number" id="minCapacity" name="minCapacity" step="50" th:value="${minCapacity}">Persons
                 </div>
                 <div>
                     <label for="maxCapacity">max </label>
-                    <input type="number" id="maxCapacity" name="maxCapacity" step="50">Persons
+                    <input type="number" id="maxCapacity" name="maxCapacity" step="50"th:value="${maxCapacity}">Persons
                 </div>
                 <h3>distance from public transport</h3>
                 <div>
                     <label for="maxKm">max </label>
-                    <input type="number" id="maxKm" name="maxKm" step="1">km
+                    <input type="number" id="maxKm" name="maxKm" step="1"th:value="${maxKm}">km
                 </div>
+
                 <h3>Food</h3>
                 <div>
                     <label for="FoodYes" class="filtername">yes</label>
@@ -48,6 +49,7 @@
                     <label for="Foodall" class="filtername">all</label>
                     <input type="radio" id="foodall" name="filterFood" value="all">
                 </div>
+
                 <h3> Indoor</h3>
                 <div>
                     <label for="indoorYes" class="filtername">yes</label>

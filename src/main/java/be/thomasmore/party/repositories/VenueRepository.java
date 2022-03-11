@@ -8,18 +8,8 @@ import org.springframework.data.repository.query.Param;
 public interface VenueRepository extends CrudRepository<Venue,Integer> {
     Iterable<Venue> findByOutdoor(boolean outdoor);
     Iterable<Venue> findByIndoor(boolean indoor);
-    @Query
-            ("SELECT v from Venue v where v.capacity >=:min and v.capacity<=:max")
-    Iterable<Venue> findByCapacityBetween (@Param("min") Integer minCapacity , @Param("max") Integer maxCapacity);
-    @Query
-            ("SELECT v from Venue v where v.capacity<=:max")
-    Iterable<Venue> findBySmaller( @Param("max") Integer maxCapacity);
 
-    @Query
-            ("SELECT v from Venue v where v.capacity >=:min")
-    Iterable<Venue> findBybigger( @Param("min") Integer minCapacity);
-
-    @Query
-            ("SELECT v from Venue v where v.distanceFromPublicTransportInKm <=:max")
-    Iterable<Venue> findByfar( @Param("max") double maxKm);
+    @Query("SELECT v from Venue v where ((:min IS NULL or :min <= v.capacity) AND (:max IS NULL or :max >= v.capacity)) and (:maxkm IS NULL or v.distanceFromPublicTransportInKm <=:maxkm) and (:food IS NULL or v.foodProvided= :food) and (:indoor IS NULL or v.indoor = :indoor) and (:outdoor IS NULL or  v.outdoor = :outdoor)")
+    Iterable<Venue> findByFilterContainingIgnoreCase(@Param("min") Integer min,@Param("max") Integer max, @Param("maxkm") Double maxKm, @Param("food") Boolean food, @Param("indoor") Boolean indoor, @Param("outdoor") Boolean outdoor);
 }
+

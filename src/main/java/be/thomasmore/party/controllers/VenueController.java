@@ -5,7 +5,6 @@ import be.thomasmore.party.repositories.VenueRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,52 +46,53 @@ public class VenueController {
     }
 
     @GetMapping({"/venuelist/filter"})
-    public String venueListWithFilter(Model model, @RequestParam(required = false) Integer minCapacity, @RequestParam(required = false) Integer maxCapacity/*, @RequestParam(required = false) double maxKm*/) {
+    public String venueListWithFilter(Model model, @RequestParam(required = false) Integer minCapacity, @RequestParam(required = false) Integer maxCapacity, @RequestParam(required = false) Double maxKm, @RequestParam(required = false) String filterFood, @RequestParam(required = false) String filterIndoor, @RequestParam(required = false) String filterOutdoor) {
         logger.info(String.format("venueListWithFilter -- min=%d", minCapacity));
+        model.addAttribute("minCapacity", minCapacity);
         logger.info(String.format("venueListWithFilter -- max=%d", maxCapacity));
-//        logger.info(String.format("venueListWithFilter -- maxKm=%f", maxKm));
-        Iterable<Venue> venuesbetween = venueRepository.findByCapacityBetween(minCapacity,maxCapacity);
-        Iterable<Venue> venuesbigger= venueRepository.findBybigger(minCapacity);
-        Iterable<Venue> venuessmaller = venueRepository.findBySmaller(maxCapacity);
-//        Iterable<Venue> venuesdistance = venueRepository.findByfar(maxKm);
-        final Iterable<Venue> allVenues = venueRepository.findAll();
-        model.addAttribute("venues", allVenues);
-        boolean showFilter = true;
-        if(minCapacity == null && maxCapacity == null){
-            model.addAttribute("venues", allVenues);
-            model.addAttribute("showFilter", showFilter);
-            long allvenuescount = venueRepository.count();
-            model.addAttribute("amount",allvenuescount);
-        }else if (minCapacity != null && maxCapacity == null){
-            model.addAttribute("showFilter", showFilter);
-            model.addAttribute("venues",venuesbigger);
-            int counter = 0 ;
-            for ( Venue ven : venuesbigger){
-                counter ++;
+        model.addAttribute("maxCapacity", maxCapacity);
+        logger.info(String.format("venueListWithFilter -- maxKm=%f", maxKm));
+        model.addAttribute("maxKm", maxKm);
+        logger.info(String.format("venueListWithFilter -- maxfood=%s", filterFood));
+
+        Boolean foodFilterBoolean = null;
+
+
+        if (filterFood != null) {
+            if (filterFood.equals("yes")) {
+                foodFilterBoolean = true;
+            } else if (filterFood.equals("no")) {
+                foodFilterBoolean = false;
             }
-            model.addAttribute("amount", counter);
-        }else if(minCapacity == null){
-            model.addAttribute("showFilter", showFilter);
-            model.addAttribute("venues",venuessmaller);
-            int counter = 0 ;
-            for ( Venue ven : venuessmaller){
-                counter ++;
-            }
-            model.addAttribute("amount", counter);
-        }else {
-            model.addAttribute("showFilter", showFilter);
-            model.addAttribute("venues",venuesbetween);
-            int counter = 0 ;
-            for ( Venue ven : venuesbetween){
-                counter ++;
-            }
-            model.addAttribute("amount", counter);
         }
-        /*if (maxKm != 0){
-            model.addAttribute("venues",venuesdistance);
-        }else {
-            model.addAttribute("venues",allVenues);
-        }*/
+        Boolean indoorFilterBoolean = null;
+        if (filterFood != null) {
+            if (filterFood.equals("yes")) {
+                indoorFilterBoolean = true;
+            } else if (filterFood.equals("no")) {
+                indoorFilterBoolean = false;
+            }
+        }
+
+        Boolean outdoorFilterBoolean = null;
+        if (filterOutdoor != null) {
+            if (filterOutdoor.equals("yes")) {
+                outdoorFilterBoolean = true;
+            } else if (filterOutdoor.equals("no")) {
+                outdoorFilterBoolean = false;
+            }
+        }
+        Iterable<Venue> venuesfiltered = venueRepository.findByFilterContainingIgnoreCase(minCapacity, maxCapacity, maxKm, foodFilterBoolean, indoorFilterBoolean, outdoorFilterBoolean);
+
+        final Iterable<Venue> allVenues = venueRepository.findAll();
+        boolean showFilter = true;
+        int counter = 0;
+        for (Venue ven : venuesfiltered) {
+            counter++;
+        }
+        model.addAttribute("showFilter", showFilter);
+        long allvenuescount = venueRepository.count();
+        model.addAttribute("amount", counter);
         return "venuelist";
     }
 }

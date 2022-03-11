@@ -15,9 +15,9 @@ public class Venue {
     private boolean outdoor;
     private boolean freeParkingAvailable;
     private String city;
-    private double distanceFromPublicTransportInKm;
+    private Double distanceFromPublicTransportInKm;
 
-    public Venue(String venueName, String linkMoreInfo, int capacity, boolean foodProvided, boolean indoor, boolean outdoor, boolean freeParkingAvailable, String city, double distanceFromPublicTransportInKm) {
+    public Venue(String venueName, String linkMoreInfo, int capacity, boolean foodProvided, boolean indoor, boolean outdoor, boolean freeParkingAvailable, String city, Double distanceFromPublicTransportInKm) {
         this.venueName = venueName;
         this.linkMoreInfo = linkMoreInfo;
         this.capacity = capacity;
@@ -113,7 +113,7 @@ public class Venue {
         return distanceFromPublicTransportInKm;
     }
 
-    public void setDistanceFromPublicTransportInKm(double distanceFromPublicTransportInKm) {
+    public void setDistanceFromPublicTransportInKm(Double distanceFromPublicTransportInKm) {
         this.distanceFromPublicTransportInKm = distanceFromPublicTransportInKm;
     }
 }

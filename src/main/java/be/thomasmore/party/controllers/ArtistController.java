@@ -48,7 +48,7 @@ public class ArtistController {
         boolean showFilter = true;
         model.addAttribute("showFilter", showFilter);
         if (keyword != null){
-            Iterable<Artist> filteredartist = artistRepository.findByTitleContainingIgnoreCase(keyword.toUpperCase());
+            Iterable<Artist> filteredartist = artistRepository.findByArtistNameContainingIgnoreCase(keyword);
             model.addAttribute("artists", filteredartist);
         }else{
             model.addAttribute("artists",allArtists);

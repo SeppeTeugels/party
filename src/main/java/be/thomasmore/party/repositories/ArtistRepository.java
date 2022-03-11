@@ -7,6 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 public interface ArtistRepository extends CrudRepository<Artist,Integer> {
-    @Query("SELECT v from Artist v where upper(v.artistName)  like %:keyword%")
-    Iterable<Artist> findByTitleContainingIgnoreCase(@Param("keyword") String keyword);
+    Iterable<Artist> findByArtistNameContainingIgnoreCase(@Param("keyword") String keyword);
 }
