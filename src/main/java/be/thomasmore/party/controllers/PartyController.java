@@ -20,10 +20,10 @@ public class PartyController {
     @GetMapping({"/partydetail/{id}", "/partydetail"})
     public String venuedetails(Model model, @PathVariable(required = false) Integer id) {
         if (id == null) return "venuedetails";
-        long allvenues = partyRepository.count();
-        model.addAttribute("allvenues", allvenues);
+        long parties = partyRepository.count();
+        model.addAttribute("parties", parties);
         Optional<Party> partyFromDb = partyRepository.findById(id);
-        partyFromDb.ifPresent(venue -> model.addAttribute("venue", venue));
+        partyFromDb.ifPresent(party -> model.addAttribute("party", party));
         return "partydetails";
     }
 }

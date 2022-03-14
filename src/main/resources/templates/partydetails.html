@@ -10,10 +10,38 @@
 <div th:replace="fragments/header:: header">Header</div>
 <main>
     <div class="container">
+        <div class="kolom2" th:if="${party}">
+            <a class="prevButton" th:if="${party.getId()}>1" th:href="@{${party.getId()}-1}" th:text="'<'"></a>
+            <a class="prevButton" th:if="${party.getId()}== 1" th:href="@{${parties.longValue()}}" th:text="'<'"></a>
 
-        <div class="row">
+            <a class="nextButton" th:if="${party.getId()}<${parties}" th:href="@{${party.id}+1}" th:text="'>'"></a>
+
+            <a class="nextButton" th:if="${party.getId()}==${parties}" th:href="@{1}" th:text="'>'"></a>
+            <h2 th:text="${party.getName()}">venuedetails</h2>
+            <h2 th:text="${party.getDate()}">date</h2>
 
 
+        </div>
+        <div class="row" th:if="${party}">
+            <div class="Kolom1" th:if="${party.getPricePresaleInEur() != null and party.getExtraInfo() != null}">
+                <p> price:</p>
+                <p>doors:</p>
+                <p>extra info:</p>
+            </div>
+            <div class="Kolom1" th:if="${party.getPriceInEur() == null }">
+                <p>Free party!!</p>
+                <p>doors:</p>
+            </div>
+
+
+            <div class="Kolom2" th:if="${party.getPricePresaleInEur() != null and party.getExtraInfo() != null}">
+                <p th:text="|${party.getPricePresaleInEur()} (presale) / ${party.getPriceInEur()} |">venuedetails</p>
+                <p th:text="${party.getDoors()}"></p>
+                <p th:text="${party.getExtraInfo()}"></p>
+            </div>
+            <div class="Kolom2" th:if="${party.getPriceInEur() == null}">
+                <p th:text="${party.getDoors()}"></p>
+            </div>
         </div>
     </div>
 
