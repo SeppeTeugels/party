@@ -15,6 +15,8 @@ public class Party {
     Date date;
     @Temporal(TemporalType.TIME)
     Date doors;
+    @ManyToOne
+    Venue venue;
 
     public Integer getId() {
         return id;
@@ -70,5 +72,13 @@ public class Party {
 
     public void setDoors(Date doors) {
         this.doors = doors;
+    }
+
+    public Venue getVenue() {
+        return venue;
+    }
+
+    public void setVenue(Venue venue) {
+        this.venue = venue;
     }
 }
