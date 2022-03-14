@@ -83,8 +83,9 @@ public class VenueController {
             }
         }
         Iterable<Venue> venuesfiltered = venueRepository.findByFilterContainingIgnoreCase(minCapacity, maxCapacity, maxKm, foodFilterBoolean, indoorFilterBoolean, outdoorFilterBoolean);
-
         final Iterable<Venue> allVenues = venueRepository.findAll();
+
+        model.addAttribute("venues", venuesfiltered);
         boolean showFilter = true;
         int counter = 0;
         for (Venue ven : venuesfiltered) {
