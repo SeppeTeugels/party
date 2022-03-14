@@ -26,4 +26,19 @@ public class PartyController {
         partyFromDb.ifPresent(party -> model.addAttribute("party", party));
         return "partydetails";
     }
+
+    @GetMapping({"/partylist", "/partylist/{filter}"})
+    public String venuelist(Model model, @PathVariable(required = false) String filter) {
+        final Iterable<Party> allparties = partyRepository.findAll();
+        model.addAttribute("parties", allparties);
+        long allpartiescount = partyRepository.count();
+        model.addAttribute("allvenuescount", allpartiescount);
+        boolean showFilter = false;
+        if (filter == null) {
+            model.addAttribute("showFilter", showFilter);
+            return "partylist";
+        } else {
+            return "partylist";
+        }
+    }
 }
