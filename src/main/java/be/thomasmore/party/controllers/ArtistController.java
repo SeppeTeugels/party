@@ -30,6 +30,7 @@ public class ArtistController {
         model.addAttribute("allartists",allartists);
         Optional<Artist> ArtistFromDb = artistRepository.findById(id);
         ArtistFromDb.ifPresent(artist -> model.addAttribute("artist", artist));
+
         return "artistdetails";
     }
     @GetMapping({"/artistlist"})

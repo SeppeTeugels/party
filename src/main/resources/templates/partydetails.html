@@ -45,6 +45,20 @@
                 <p th:text="${party.getDoors()}"></p>
             </div>
         </div>
+        <div class="row">
+            <div class="Kolom1" th:if="${party}">
+                <h2 th:text="|line up:|">lineup</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="Kolom2" th:if="${party}">
+                <div  th:each="artist : ${party.getArtists()}">
+                    <a class="blok3" th:href="@{|/artistdetail/${artist.id}|}">
+                        <span th:text="${artist.getArtistName()}"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 
 </main>

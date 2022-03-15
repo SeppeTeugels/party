@@ -33,6 +33,21 @@
                 <p>no artist chosen</p>
             </div>
         </div>
+        <div class="row">
+            <div class="Kolom1" th:if="${artist}">
+                <h2 th:text="| Parties by ${artist.getArtistName()} :|">artistname</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="Kolom2" th:if="${artist}">
+                <div  th:each="party : ${artist.getParties()}">
+                    <a class="blok3" th:href="@{|/partydetail/${party.id}|}">
+                        <span th:text="${party.getName()}"></span>
+                        <div th:text=" ${party.getDate()}"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 <div th:replace="fragments/footer:: footer">footer</div>
