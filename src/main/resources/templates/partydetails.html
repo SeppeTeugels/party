@@ -37,7 +37,7 @@
 
             <div class="Kolom2" th:if="${party.getPricePresaleInEur() != null and party.getExtraInfo() != null}">
                 <p th:text="|${party.getVenue().getCity()} (${party.getVenue().getDistanceFromPublicTransportInKm()} km from public transport)|"></p>
-                <p th:text="|${party.getPricePresaleInEur()} (presale) / ${party.getPriceInEur()} |">venuedetails</p>
+                <p th:text="|${party.getPricePresaleInEur()}&euro; (presale) / ${party.getPriceInEur()}&euro; |">venuedetails</p>
                 <p th:text="${party.getDoors()}"></p>
                 <p th:text="${party.getExtraInfo()}"></p>
             </div>
@@ -46,15 +46,29 @@
             </div>
         </div>
         <div class="row">
-            <div class="Kolom1" th:if="${party}">
+            <div class="Kolom1" th:if="${!party.getArtists().isEmpty()}">
                 <h2 th:text="|line up:|">lineup</h2>
             </div>
         </div>
         <div class="row">
-            <div class="Kolom2" th:if="${party}">
+            <div class="Kolom2" th:if="${!party.getArtists().isEmpty()}">
                 <div  th:each="artist : ${party.getArtists()}">
                     <a class="blok3" th:href="@{|/artistdetail/${artist.id}|}">
                         <span th:text="${artist.getArtistName()}"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="Kolom1" th:if="${!party.getAnimals().isEmpty()}">
+                <h2 th:text="|who goes :|">lineup</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="Kolom2" th:if="${!party.getAnimals().isEmpty()}">
+                <div  th:each="animal : ${party.getAnimals()}">
+                    <a class="blok3" th:href="@{|/animaldetail/${animal.id}|}">
+                        <span th:text="${animal.getName()}"></span>
                     </a>
                 </div>
             </div>

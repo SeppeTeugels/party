@@ -4,18 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
-    <title>Partylist</title>
+    <title>Animallist</title>
 </head>
 <body>
 <div th:replace="fragments/header:: header">Header</div>
 <main>
-    <h2>Parties</h2>
+    <h2>Animals</h2>
     <div class="row ">
         <div class="Kolom1">
-            <div th:each="party : ${parties}">
-                <a class="blok3" th:href="@{|/partydetail/${party.id}|}">
-                    <span th:text="${party.getName()}"></span>
-                    <div th:text="${party.getDate()}"></div>
+            <div th:each="animal : ${allanimals}">
+                <a class="blok3" th:href="@{|/animaldetail/${animal.id}|}">
+                    <span th:text="${animal.getName()}"></span>
                 </a>
             </div>
         </div>

@@ -21,6 +21,9 @@ public class Party {
     @ManyToMany
     Collection<Artist> artists;
 
+    @ManyToMany(mappedBy = "parties")
+    private Collection<Animal> animals;
+
     public Integer getId() {
         return id;
     }
@@ -91,5 +94,13 @@ public class Party {
 
     public void setArtists(Collection<Artist> artist) {
         this.artists = artist;
+    }
+
+    public Collection<Animal> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(Collection<Animal> animals) {
+        this.animals = animals;
     }
 }

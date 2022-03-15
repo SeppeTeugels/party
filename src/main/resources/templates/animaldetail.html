@@ -1,0 +1,53 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
+    <title>animaldetail</title>
+</head>
+<body>
+<div th:replace="fragments/header:: header">Header</div>
+<main>
+    <div class="container">
+        <div class="kolom2" th:if="${animal}">
+            <a class="prevButton" th:if="${animal.getId()}>1" th:href="@{${animal.id}-1}" th:text="'<'"></a>
+            <a class="prvButton" th:if="${animal.getId()}== 1" th:href="@{${animals}}" th:text="'<'"></a>
+
+            <a class="nextButton" th:if="${animal.getId()}<${animals}" th:href="@{${animal.id}+1}" th:text="'>'"></a>
+            <a class="nextButton" th:if="${animal.getId()}==${animals}" th:href="@{1}" th:text="'>'"></a>
+
+        </div>
+        <div class="row">
+            <!-- hier test je of venue niet gelijk is aan null ( is er een waarde aanwezig) -->
+            <div class="Kolom2" th:if="${animal}">
+
+                <h2 th:text="${animal.getName()}"></h2>
+                <p th:text="|city : ${animal.getCity()}|"> artistdetails</p>
+                <p th:text="|Bio: ${animal.getBio()}|">artistdetails</p>
+
+            </div>
+            <div class="kolom2" th:unless="${animal}">
+                <p>no artist chosen</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="Kolom1" th:if="${!animal.getParties().isEmpty()}">
+                <h2 th:text="|going to :|">artistname</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="Kolom2" th:if="${!animal.getParties().isEmpty()}">
+                <div  th:each="party : ${animal.getParties()}">
+                    <a class="blok3" th:href="@{|/partydetail/${party.id}|}">
+                        <span th:text="${party.getName()}"></span>
+                        <div th:text=" ${party.getDate()}"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div th:replace="fragments/footer:: footer">footer</div>
+</body>
+</html>
