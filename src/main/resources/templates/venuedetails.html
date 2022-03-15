@@ -20,6 +20,7 @@
         </div>
         <div class="row">
             <div class="Kolom1" th:if="${venue}">
+                <h2 th:text="${venue.getVenueName()}">venuedetails</h2>
                 <p> info:</p>
                 <p>max number of persons:</p>
                 <p>food provided:</p>
@@ -31,7 +32,6 @@
             </div>
 
             <div class="Kolom2" th:if="${venue}">
-                <h2 th:text="${venue.getVenueName()}">venuedetails</h2>
                 <a th:href="${venue.getLinkMoreInfo()}"><p th:text="${venue.getLinkMoreInfo()}"></p></a>
                 <p th:text="${venue.getCapacity()}">venuedetails</p>
                 <p th:text="${venue.isFoodProvided()? 'yes':'no'}"></p>
@@ -42,8 +42,25 @@
                 <p th:text="|${venue.getDistanceFromPublicTransportInKm()} km|">venuedetails</p>
             </div>
 
+
             <div class="Kolom1" th:unless="${venue}">
                 <p>no venue was chosen</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="Kolom1" th:if="${venue}">
+                <h2 th:text="| Parties in ${venue.getVenueName()}|">venuedetails</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="Kolom2" th:if="${venue}">
+                <div  th:each="party : ${allparties}">
+                    <a class="blok3" th:href="@{|/partydetail/${party.id}|}">
+                        <span th:text="${party.getName()}"></span>
+                        <div th:text=" ${party.getDate()}"></div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
