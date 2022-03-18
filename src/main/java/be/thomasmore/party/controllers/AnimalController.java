@@ -19,7 +19,7 @@ public class AnimalController {
 
     @GetMapping({"/animaldetail/{id}", "/animaldetail"})
     public String venuedetails(Model model, @PathVariable(required = false) Integer id) {
-        if (id == null) return "animaldetails";
+        if (id == null) return "animaldetail";
         long animals = animalRepository.count();
         model.addAttribute("animals", animals);
         Optional<Animal> animalFromDb = animalRepository.findById(id);
