@@ -1,13 +1,12 @@
 package be.thomasmore.party.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
 public class Animal {
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "animal_generator")
+    @SequenceGenerator(name ="animal_generator", sequenceName = "animal_seq", allocationSize = 1)
     @Id
     private int id;
     private String name;
@@ -15,6 +14,16 @@ public class Animal {
     private String bio;
     @ManyToMany
     private Collection<Party> parties;
+    @OneToOne(fetch = FetchType.LAZY)
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Animal() {
     }

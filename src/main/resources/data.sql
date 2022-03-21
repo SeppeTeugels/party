@@ -180,22 +180,54 @@ INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (3, 3);
 INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (3, 5);
 INSERT INTO PARTY_ARTISTS (PARTIES_ID, ARTISTS_ID) VALUES (4, 5);
 
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-VALUES (1, 'Gillende Giraf', 'Mechelen','maakt altijd veel lawaai');
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-VALUES (2, 'Dorstige Dromedaris', 'Leest','drinkt alles op');
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-values (3, 'Dansende Draak', 'Hombeek','de stukken vliegen ervan af');
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-values (4, 'Zingende Zebra', 'Leest','denkt dat hij goed kan zingen');
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-values (5, 'Drinkende Das', 'Hombeek','stopt niet');
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-values (6, 'Zuipende Zalm', 'Rumst','die wil je niet op je feest');
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-values (7, 'Feestende Flamingo', 'Mechelen','jeeeee');
-INSERT INTO ANIMAL (ID, NAME, CITY, BIO)
-values (8, 'Kotsende Kikker', 'Mechelen','aie aie aie');
+
+INSERT INTO USER (ID, USERNAME, PASSWORD, ROLE) VALUES
+(nextval('USER_SEQ'), 'giraf','$2a$10$3./fKbkO26myMBSlL3zlsOo.LMODBCsfVS3i3yxS3LNsoP9qicT1a', 'USER');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, USER_ID)
+VALUES ((nextval('ANIMAL_SEQ')), 'Gillende Giraf', 'Mechelen','maakt altijd veel lawaai', 1);
+
+INSERT INTO USER (ID, USERNAME, PASSWORD, ROLE) VALUES
+(nextval('USER_SEQ'), 'dromedaris','$2a$10$3./fKbkO26myMBSlL3zlsOo.LMODBCsfVS3i3yxS3LNsoP9qicT1a', 'USER');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, USER_ID)
+VALUES (nextval('ANIMAL_SEQ'), 'Dorstige Dromedaris', 'Leest','drinkt alles op',2);
+
+INSERT INTO USER (ID, USERNAME, PASSWORD, ROLE) VALUES
+(nextval('USER_SEQ'), 'draak','$2a$10$3./fKbkO26myMBSlL3zlsOo.LMODBCsfVS3i3yxS3LNsoP9qicT1a', 'USER');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, USER_ID)
+values (nextval('ANIMAL_SEQ'), 'Dansende Draak', 'Hombeek','de stukken vliegen ervan af',3);
+
+INSERT INTO USER (ID, USERNAME, PASSWORD, ROLE) VALUES
+(nextval('USER_SEQ'), 'zebra','$2a$10$3./fKbkO26myMBSlL3zlsOo.LMODBCsfVS3i3yxS3LNsoP9qicT1a', 'USER');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, USER_ID)
+values (nextval('ANIMAL_SEQ'), 'Zingende Zebra', 'Leest','denkt dat hij goed kan zingen',4);
+
+INSERT INTO USER (ID, USERNAME, PASSWORD, ROLE) VALUES
+(nextval('USER_SEQ'), 'das','$2a$10$3./fKbkO26myMBSlL3zlsOo.LMODBCsfVS3i3yxS3LNsoP9qicT1a', 'USER');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, USER_ID)
+values (nextval('ANIMAL_SEQ'), 'Drinkende Das', 'Hombeek','stopt niet',5);
+
+INSERT INTO USER (ID, USERNAME, PASSWORD, ROLE) VALUES
+(nextval('USER_SEQ'), 'zalm','$2a$10$3./fKbkO26myMBSlL3zlsOo.LMODBCsfVS3i3yxS3LNsoP9qicT1a', 'USER');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, USER_ID)
+values (nextval('ANIMAL_SEQ'), 'Zuipende Zalm', 'Rumst','die wil je niet op je feest',6);
+
+INSERT INTO USER (ID, USERNAME, PASSWORD, ROLE) VALUES
+(nextval('USER_SEQ'), 'flamingo','$2a$10$3./fKbkO26myMBSlL3zlsOo.LMODBCsfVS3i3yxS3LNsoP9qicT1a', 'USER');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, USER_ID)
+values (nextval('ANIMAL_SEQ'), 'Feestende Flamingo', 'Mechelen','jeeeee',7);
+
+INSERT INTO USER (ID, USERNAME, PASSWORD, ROLE) VALUES
+(nextval('USER_SEQ'), 'kikker','$2a$10$3./fKbkO26myMBSlL3zlsOo.LMODBCsfVS3i3yxS3LNsoP9qicT1a', 'USER');
+INSERT INTO ANIMAL (ID, NAME, CITY, BIO, USER_ID)
+values (nextval('ANIMAL_SEQ'), 'Kotsende Kikker', 'Mechelen','aie aie aie',8);
+
+INSERT INTO USER (ID, USERNAME, PASSWORD, ROLE) VALUES
+    (nextval('USER_SEQ'), 'seppe','$2a$10$EwBm8NNMC9u4KqmzHkj6keS0cq4LZ0NGq9Yh3lfqgCKe93UanLINS','ADMIN');
+
+INSERT INTO USER (ID, USERNAME, PASSWORD, ROLE) VALUES
+    (nextval('USER_SEQ'), 'dries','$2a$10$ohxItAzc4VOrFZwaOZ1REOCBvQNvrTwTxQ/X5hhbAyziGHkZN4Hsm','USER');
+
+
 INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (1,1);
 INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (2,2);
 INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (2,3);
@@ -214,11 +246,4 @@ INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (8,1);
 INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (8,2);
 INSERT INTO ANIMAL_PARTIES(ANIMALS_ID, PARTIES_ID) values (8,3);
 
-INSERT INTO USER (ID, USERNAME, PASSWORD, ROLE) VALUES
-    (nextval('USER_SEQ'), 'seppe',
-     '$2a$10$EwBm8NNMC9u4KqmzHkj6keS0cq4LZ0NGq9Yh3lfqgCKe93UanLINS',
-     'ADMIN');
-INSERT INTO USER (ID, USERNAME, PASSWORD, ROLE) VALUES
-    (nextval('USER_SEQ'), 'dries',
-     '$2a$10$ohxItAzc4VOrFZwaOZ1REOCBvQNvrTwTxQ/X5hhbAyziGHkZN4Hsm',
-     'USER');
+

@@ -7,19 +7,14 @@
     <title>Home</title>
 </head>
 <body>
- <div th:replace="fragments/header:: header">Header</div>
+<div th:replace="fragments/header:: header">Header</div>
 <main>
-    <div  th:if="${loginname.equals('NOBODY')}">
-        <a class="blok2" th:href="@{/login}">login</a>
-    </div>
-    <div th:unless="${loginname.equals('NOBODY')}">
+    <div th:if="${!loginname.isEmpty()}">
         <h2 th:text="|welkom ${loginname}|"></h2>
-        <a class="blok2" th:href="@{/logout}">logout</a>
     </div>
-
     <img th:src="@{/img/party.png}" alt="party">
 </main>
 
- <div th:replace="fragments/footer:: footer">footer</div>
+<div th:replace="fragments/footer:: footer">footer</div>
 </body>
 </html>

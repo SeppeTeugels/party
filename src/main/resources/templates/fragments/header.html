@@ -1,6 +1,7 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
@@ -15,6 +16,12 @@
     <div class="blok2"><a th:href="@{/artistlist}">artists</a></div>
     <div class="blok2"><a th:href="@{/partylist}">parties</a></div>
     <div class="blok2"><a th:href="@{/animallist}">animals</a></div>
+    <div  class="blok2" sec:authorize="isAuthenticated()">
+        <a th:href="@{/logout}">logout</a>
+    </div>
+    <div class="blok2" sec:authorize="!isAuthenticated()">
+        <a th:href="@{/login}">login</a>
+    </div>
 </div>
 </body>
 </html>
