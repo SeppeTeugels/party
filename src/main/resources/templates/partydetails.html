@@ -19,7 +19,7 @@
             <a class="nextButton" th:if="${party.getId()}==${parties}" th:href="@{1}" th:text="'>'"></a>
             <h2 th:text="${party.getName()}">venuedetails</h2>
             <h2 th:text="|${party.getDate()} in |"></h2>
-            <a th:class="venuename" th:href="@{/venuedetail/${party.getVenue().id}}">
+            <a th:class="venuename" th:href="@{/venuedetails/${party.getVenue().id}}">
                 <span th:text="${party.getVenue().getVenueName()}"></span>
             </a>
 
@@ -75,6 +75,12 @@
                     </a>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="Kolom1" th:if="${party}">
+            <a th:class="blok2" th:href="@{|/admin/partyedit/${party.getId()}|}" th:text="|edit|">
+            </a>
         </div>
     </div>
 

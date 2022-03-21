@@ -1,10 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
+    <title>venuedetails</title>
 </head>
 <body>
-<p>editeren</p>
+<div th:replace="fragments/header:: header">Header</div>
+<main>
+    <form th:action="@{|/admin/partyedit/${party.id}|}" th:object="${party}" method="post">
+        <div class="container">
+            <div class="kolom2" th:if="${party}">
+                <h2 th:text="*{name}">venuedetails</h2>
+                <h2 th:text="|*{date} in |"></h2>
+                <a th:class="venuename" th:href="@{|/venuedetails/${party.getVenue().getId()}|}">
+                    <span th:text="*{venue.venueName}"></span>
+                </a>
+            </div>
+            <div class="row" th:if="${party}" th:object="${party}">
+                <div class="Kolom1" th:if="${party.getPricePresaleInEur() != null and party.getExtraInfo() != null}">
+                    <p>name:</p>
+                    <p>where:</p>
+                    <p>price presale:</p>
+                    <p>price:</p>
+                    <p>doors:</p>
+                    <p>extra info:</p>
+                </div>
+                <div class="Kolom1" th:if="${party.getPriceInEur() == null }">
+                    <p>Free party!!</p>
+                    <p>doors:</p>
+                </div>
+
+
+                <div class="Kolom2" th:if="${party.getPricePresaleInEur() != null and party.getExtraInfo() != null}" th:object="${party}">
+                    <p>
+                        <label for="partyName"></label>
+                        <input type="text" id="partyName" name="partyName" th:field="*{name}" th:value="${party.getName()}">
+                    </p>
+                    <p th:text="|*{venue.city} (*{venue.distanceFromPublicTransportInKm} km from public transport)|"></p>
+                    <p>
+                        <label for="pricePreSale"></label>
+                        <input type="text" id="pricePreSale" th:field="*{pricePresaleInEur}" name="pricePreSale"
+                               th:value="*{pricePresaleInEur}">
+                    </p>
+                    <p>
+                        <label for="priceSale"></label>
+                        <input type="text" id="priceSale" name="priceSale" th:field="*{priceInEur}" th:value="*{priceInEur}">
+                    </p>
+                    <p th:text="*{doors}"></p>
+                    <p>
+                        <label for="extraInfo"></label>
+                        <input type="text" id="extraInfo" name="extraInfo" th:field="*{extraInfo}" th:value="*{extraInfo}">
+                    </p>
+                </div>
+                <div class="Kolom2" th:if="${party.getPriceInEur() == null}">
+                    <p th:text="*{doors}"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="Kolom1" th:if="${party}" th:object="${party}">
+                    <a th:class="blok2" th:href="@{|/partydetail/${party.getId()}|}" th:text="|cancel|">
+                    </a>
+                    <div class="onefilter">
+                        <input class="blok2" type="submit" value="save">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</main>
+<div th:replace="fragments/footer:: footer">Header</div>
 </body>
 </html>
