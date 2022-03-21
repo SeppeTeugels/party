@@ -1,10 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
+    <title>venuedetails</title>
 </head>
 <body>
-<p>party new</p>
+<div th:replace="fragments/header:: header">Header</div>
+<main>
+    <form th:action="@{|/admin/partynew|}" method="post" th:object="${party}">
+        <div class="container">
+            <div class="kolom2">
+                <h2 th:text="|New Party|"></h2>
+            </div>
+            <div class="row">
+                <div class="Kolom1">
+                    <p>name:</p>
+                    <p>date:</p>
+                    <p>venue:</p>
+                    <p>price presale:</p>
+                    <p>price:</p>
+                    <p>doors:</p>
+                    <p>extra info:</p>
+                </div>
+                <div class="Kolom2">
+                    <p>
+                        <label for="partyName"></label>
+                        <input type="text" id="partyName" name="partyName" th:field="*{name}">
+                    </p>
+
+                    <p>
+                        <input id="date" th:field="*{date}">
+                    </p>
+                    <p>
+                        <select id="venuewhere" th:field="*{venue}">
+                            <option th:each=" v : ${allvenues}"
+                                    th:selected="*{venue}"
+                                    th:value="${v.getId()}"
+                                    th:text="${v.getVenueName()}">
+                            </option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="pricePreSale"></label>
+                        <input type="text" id="pricePreSale" name="pricePreSale" th:field="*{pricePresaleInEur}" >
+                    </p>
+                    <p>
+                        <label for="priceSale"></label>
+                        <input type="text" id="priceSale" name="priceSale" th:field="*{priceInEur}">
+                    </p>
+
+                    <p>
+                        <input id="door" th:field="*{doors}">
+                    </p>
+
+                    <p>
+                        <label for="extraInfo"></label>
+                        <input type="text" id="extraInfo" name="extraInfo" th:field="*{extraInfo}">
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="Kolom1">
+                    <div class="onefilter">
+                            <input type="submit" value="create"></a>
+                    </div>
+                    <div class="onefilter">
+                        <a class="blok2" th:href="@{/partylist}" th:text="|cancel|"></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</main>
+<div th:replace="fragments/footer:: footer">Header</div>
 </body>
 </html>

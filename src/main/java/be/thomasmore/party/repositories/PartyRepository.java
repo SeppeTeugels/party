@@ -12,4 +12,5 @@ import java.util.Optional;
 public interface PartyRepository extends CrudRepository<Party,Integer> {
 
     Iterable<Party>findByVenue(Optional<Venue> venueFromDb);
+
 }

@@ -1,11 +1,15 @@
 package be.thomasmore.party.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
 
 @Entity
 public class Party {
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "party_generator")
+    @SequenceGenerator(name ="party_generator", sequenceName = "party_seq", allocationSize = 1)
     @Id
     Integer id;
     String name;
@@ -13,8 +17,10 @@ public class Party {
     Integer priceInEur;
     String ExtraInfo;
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     Date date;
     @Temporal(TemporalType.TIME)
+    @DateTimeFormat(pattern = "HH:mm")
     Date doors;
     @ManyToOne(fetch = FetchType.LAZY)
     Venue venue;

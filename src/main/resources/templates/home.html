@@ -9,6 +9,14 @@
 <body>
  <div th:replace="fragments/header:: header">Header</div>
 <main>
+    <div  th:if="${loginname.equals('NOBODY')}">
+        <a class="blok2" th:href="@{/login}">login</a>
+    </div>
+    <div th:unless="${loginname.equals('NOBODY')}">
+        <h2 th:text="|welkom ${loginname}|"></h2>
+        <a class="blok2" th:href="@{/logout}">logout</a>
+    </div>
+
     <img th:src="@{/img/party.png}" alt="party">
 </main>
 
