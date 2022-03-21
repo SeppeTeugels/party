@@ -1,6 +1,7 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" href="/css/style.css"/>
@@ -79,10 +80,13 @@
         </div>
     </div>
     <div class="row">
-        <div class="Kolom1" th:if="${party}">
-            <a th:class="blok2" th:href="@{|/admin/partyedit/${party.getId()}|}" th:text="|edit|">
-            </a>
+        <div sec:authorize="hasAuthority('ADMIN')">
+            <div class="Kolom1" th:if="${party}">
+                <a th:class="blok2" th:href="@{|/admin/partyedit/${party.getId()}|}" th:text="|edit|">
+                </a>
+            </div>
         </div>
+
     </div>
 
 </main>
